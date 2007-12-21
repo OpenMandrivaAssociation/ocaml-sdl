@@ -22,6 +22,7 @@ BuildRequires:	ocaml
 BuildRequires:	ocaml-lablgl-devel
 BuildRequires:  findlib
 Obsoletes:      ocaml-SDL
+BuildRoot: 	%{_tmppath}/%{name}-%{version}
 
 %package -n %{name}-devel
 Summary:	Wrapper around the cross platform Simple DirectMedia Layer game library
