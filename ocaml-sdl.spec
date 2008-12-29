@@ -1,7 +1,7 @@
 %define up_name		ocamlsdl
 %define name		ocaml-sdl
 %define version		0.7.2
-%define release		%mkrel 10
+%define release		%mkrel 11
 
 Name:		%{name}
 Version:	%{version}
@@ -9,7 +9,6 @@ Release:	%{release}
 Summary:	Wrapper around the cross platform Simple DirectMedia Layer game library
 License:	LGPL
 Source:		http://belnet.dl.sourceforge.net/sourceforge/ocamlsdl/%{up_name}-%{version}.tar.bz2
-Patch0:		ocamlsdl-0.7.2.install-destdir.patch
 Group:		Development/Other
 URL:		http://ocamlsdl.sourceforge.net/
 BuildRequires:	libSDL-devel
@@ -20,7 +19,7 @@ BuildRequires:	libpng-devel
 BuildRequires:	libncurses-devel
 BuildRequires:	ocaml
 BuildRequires:	ocaml-lablgl-devel
-BuildRequires:  findlib
+BuildRequires:  ocaml-findlib
 Obsoletes:      ocaml-SDL
 BuildRoot: 	%{_tmppath}/%{name}-%{version}
 
@@ -47,17 +46,16 @@ using 2d (SDL), or 3d (OpenGL), or a combination of both if you wish.
 
 %prep
 %setup -q -n %{up_name}-%{version}
-%patch -p1
 
 %build
-%configure2_5x --with-lablgldir=%{ocaml_sitelib}/lablgl
+%configure2_5x --with-lablgldir=%{_libdir}/ocaml/lablgl
 make
 
 %install
 rm -rf %{buildroot}
-install -d %{buildroot}%{ocaml_sitelib}
-install -d %{buildroot}%{ocaml_sitelib}/stublibs
-make install OCAMLFIND_INSTFLAGS="-destdir %{buildroot}/%{ocaml_sitelib}"
+install -d %{buildroot}%{_libdir}/ocaml
+install -d %{buildroot}%{_libdir}/ocaml/stublibs
+make install OCAMLFIND_DESTDIR="%{buildroot}/%{_libdir}/ocaml"
 mkdir -p %{buildroot}/%{_infodir}
 install doc/*.info* %{buildroot}/%{_infodir}
 
@@ -73,12 +71,16 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root)
 %doc README AUTHORS META NEWS doc/* 
-%dir %{ocaml_sitelib}/sdl
-%{ocaml_sitelib}/sdl/*.cmi
-%{ocaml_sitelib}/stublibs/*
+%dir %{_libdir}/ocaml/sdl
+%{_libdir}/ocaml/sdl/*.cmi
+%{_libdir}/ocaml/sdl/*.cma
+%{_libdir}/ocaml/sdl/META
+%{_libdir}/ocaml/stublibs/*
 
 %files devel
 %defattr(-,root,root)
-%{ocaml_sitelib}/sdl/*
-%exclude %{ocaml_sitelib}/sdl/*.cmi
+%{_libdir}/ocaml/sdl/*.a
+%{_libdir}/ocaml/sdl/*.cmxa
+%{_libdir}/ocaml/sdl/*.cmx
+%{_libdir}/ocaml/sdl/*.mli
 %{_infodir}/*
