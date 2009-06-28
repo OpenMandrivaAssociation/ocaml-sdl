@@ -1,7 +1,7 @@
 %define up_name		ocamlsdl
 %define name		ocaml-sdl
 %define version		0.7.2
-%define release		%mkrel 11
+%define release		%mkrel 12
 
 Name:		%{name}
 Version:	%{version}
