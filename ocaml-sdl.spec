@@ -1,7 +1,7 @@
 %define up_name		ocamlsdl
 %define name		ocaml-sdl
 %define version		0.7.2
-%define release		%mkrel 12
+%define release		%mkrel 13
 
 Name:		%{name}
 Version:	%{version}
@@ -58,6 +58,8 @@ install -d %{buildroot}%{_libdir}/ocaml/stublibs
 make install OCAMLFIND_DESTDIR="%{buildroot}/%{_libdir}/ocaml"
 mkdir -p %{buildroot}/%{_infodir}
 install doc/*.info* %{buildroot}/%{_infodir}
+install -d %{buildroot}%{_bindir}/
+install -m 0755 ./xpm_to_ml %{buildroot}%{_bindir}/
 
 %clean
 rm -rf %{buildroot}
@@ -70,8 +72,9 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc README AUTHORS META NEWS doc/* 
+%doc COPYING README AUTHORS NEWS
 %dir %{_libdir}/ocaml/sdl
+%{_bindir}/xpm_to_ml
 %{_libdir}/ocaml/sdl/*.cmi
 %{_libdir}/ocaml/sdl/*.cma
 %{_libdir}/ocaml/sdl/META
@@ -79,6 +82,7 @@ rm -rf %{buildroot}
 
 %files devel
 %defattr(-,root,root)
+%doc doc/*
 %{_libdir}/ocaml/sdl/*.a
 %{_libdir}/ocaml/sdl/*.cmxa
 %{_libdir}/ocaml/sdl/*.cmx
