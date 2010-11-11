@@ -1,14 +1,14 @@
 %define up_name		ocamlsdl
 %define name		ocaml-sdl
-%define version		0.7.2
-%define release		%mkrel 13
+%define version		0.8.0
+%define release		%mkrel 1
 
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Summary:	Wrapper around the cross platform Simple DirectMedia Layer game library
 License:	LGPL
-Source:		http://belnet.dl.sourceforge.net/sourceforge/ocamlsdl/%{up_name}-%{version}.tar.bz2
+Source:		http://dl.sourceforge.net/sourceforge/ocamlsdl/ocamlsdl-%{version}.tar.gz
 Group:		Development/Other
 URL:		http://ocamlsdl.sourceforge.net/
 BuildRequires:	libSDL-devel
