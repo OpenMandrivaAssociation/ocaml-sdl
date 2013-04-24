@@ -65,8 +65,6 @@ install -m 0755 ./xpm_to_ml %{buildroot}%{_bindir}/
 rm -rf %{buildroot}
 
 
-%preun devel
-%_remove_install_info ocamlsdl.info
 
 %files
 %defattr(-,root,root)
