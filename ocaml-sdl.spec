@@ -4,11 +4,11 @@
 %define release 		2
 
 Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Version:	0.9.1
+Release:	1
 Summary:	Wrapper around the cross platform Simple DirectMedia Layer game library
 License:	LGPL
-Source:		http://dl.sourceforge.net/sourceforge/ocamlsdl/ocamlsdl-%{version}.tar.gz
+Source:		https://sourceforge.net/projects/ocamlsdl/files/OCamlSDL/ocamlsdl-0.9.1/ocamlsdl-%{version}.tar.gz
 Group:		Development/Other
 URL:		http://ocamlsdl.sourceforge.net/
 BuildRequires:	libSDL-devel
@@ -84,3 +84,4 @@ rm -rf %{buildroot}
 %{_libdir}/ocaml/sdl/*.cmx
 %{_libdir}/ocaml/sdl/*.mli
 %{_infodir}/*
+
