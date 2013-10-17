@@ -1,9 +1,6 @@
 %define up_name		ocamlsdl
-%define name		ocaml-sdl
-%define version		0.8.0
-%define release 		2
 
-Name:		%{name}
+Name:		ocaml-sdl
 Version:	0.9.1
 Release:	1
 Summary:	Wrapper around the cross platform Simple DirectMedia Layer game library
@@ -21,7 +18,6 @@ BuildRequires:	ocaml
 BuildRequires:	ocaml-lablgl-devel
 BuildRequires:  ocaml-findlib
 Obsoletes:      ocaml-SDL
-BuildRoot: 	%{_tmppath}/%{name}-%{version}
 
 %package -n %{name}-devel
 Summary:	Wrapper around the cross platform Simple DirectMedia Layer game library
@@ -52,7 +48,6 @@ using 2d (SDL), or 3d (OpenGL), or a combination of both if you wish.
 make
 
 %install
-rm -rf %{buildroot}
 install -d %{buildroot}%{_libdir}/ocaml
 install -d %{buildroot}%{_libdir}/ocaml/stublibs
 make install OCAMLFIND_DESTDIR="%{buildroot}/%{_libdir}/ocaml"
@@ -62,12 +57,9 @@ install -d %{buildroot}%{_bindir}/
 install -m 0755 ./xpm_to_ml %{buildroot}%{_bindir}/
 
 %clean
-rm -rf %{buildroot}
-
 
 
 %files
-%defattr(-,root,root)
 %doc COPYING README AUTHORS NEWS
 %dir %{_libdir}/ocaml/sdl
 %{_bindir}/xpm_to_ml
@@ -77,7 +69,6 @@ rm -rf %{buildroot}
 %{_libdir}/ocaml/stublibs/*
 
 %files devel
-%defattr(-,root,root)
 %doc doc/*
 %{_libdir}/ocaml/sdl/*.a
 %{_libdir}/ocaml/sdl/*.cmxa
