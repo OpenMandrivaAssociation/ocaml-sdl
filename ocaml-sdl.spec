@@ -8,12 +8,12 @@ License:	LGPL
 Source:		https://sourceforge.net/projects/ocamlsdl/files/OCamlSDL/ocamlsdl-0.9.1/ocamlsdl-%{version}.tar.gz
 Group:		Development/Other
 URL:		http://ocamlsdl.sourceforge.net/
-BuildRequires:	libSDL-devel
-BuildRequires:	libSDL_image-devel
-BuildRequires:	libSDL_mixer-devel
-BuildRequires:	libSDL_ttf-devel
-BuildRequires:	libpng-devel
-BuildRequires:	libncurses-devel
+BuildRequires:	pkgconfig(sdl)
+BuildRequires:	pkgconfig(SDL_image)
+BuildRequires:	pkgconfig(SDL_mixer)
+BuildRequires:	pkgconfig(SDL_ttf)
+BuildRequires:	pkgconfig(libpng)
+BuildRequires:	pkgconfig(ncurses)
 BuildRequires:	ocaml
 BuildRequires:	ocaml-lablgl-devel
 BuildRequires:  ocaml-findlib
@@ -22,11 +22,11 @@ Obsoletes:      ocaml-SDL
 %package -n %{name}-devel
 Summary:	Wrapper around the cross platform Simple DirectMedia Layer game library
 Group:		Development/Other
-Requires:	libSDL-devel
-Requires:	libSDL_image-devel
-Requires:	libSDL_mixer-devel
-Requires:	libSDL_ttf-devel
-Requires:	libpng-devel
+Requires:	pkgconfig(sdl)
+Requires:	pkgconfig(SDL_image)
+Requires:	pkgconfig(SDL_mixer)
+Requires:	pkgconfig(SDL_ttf)
+Requires:	pkgconfig(libpng)
 Obsoletes:  ocaml-SDL-devel
 Requires:	%{name} = %{version}-%{release}
 
