@@ -7,7 +7,7 @@ Summary:	Wrapper around the cross platform Simple DirectMedia Layer game library
 License:	LGPL
 Source:		https://sourceforge.net/projects/ocamlsdl/files/OCamlSDL/ocamlsdl-0.9.1/ocamlsdl-%{version}.tar.gz
 Group:		Development/Other
-URL:		http://ocamlsdl.sourceforge.net/
+URL:		https://ocamlsdl.sourceforge.net/
 BuildRequires:	pkgconfig(sdl)
 BuildRequires:	pkgconfig(SDL_image)
 BuildRequires:	pkgconfig(SDL_mixer)
